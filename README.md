@@ -1,4 +1,4 @@
-# [Papa's Kiss](https://the-ludwig.github.io/cook/)
+# [Papa's Kiss](https://the-ludwig.github.io/PapasKiss/)
 [![Publish Webpage](https://github.com/The-Ludwig/cook/actions/workflows/publish.yml/badge.svg)](https://github.com/The-Ludwig/cook/actions/workflows/publish.yml)
 
 Webpage: [https://the-ludwig.github.io/cook/](https://the-ludwig.github.io/cook/)

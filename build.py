@@ -12,7 +12,7 @@ TEMPLATE_OVERVIEW = os.getenv("TEMPLATE_OVERVIEW", "overview.html")
 TEMPLATE_RECIPE = os.getenv("TEMPLATE_RECIPE", "recipe.html")
 OUTPUT_DIR = os.getenv("OUTPUT_DIR", "build")
 LINK_EXTENSION = os.getenv("LINK_EXTENSION", "")
-REPOSITORY = os.getenv("GITHUB_REPOSITORY", "the-ludwig/cook")
+REPOSITORY = os.getenv("GITHUB_REPOSITORY", "the-ludwig/PapasKiss")
 BRANCH = os.getenv("GITHUB_REF", "main")
 
 GLOBAL_VARS = {"BASE_NAME": BASE_NAME}
