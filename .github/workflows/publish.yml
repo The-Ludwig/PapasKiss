@@ -28,6 +28,8 @@ jobs:
       
       - name: Build 🏗️
         run: poetry run python build.py
+        env:
+          BASE_NAME: /cook
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
