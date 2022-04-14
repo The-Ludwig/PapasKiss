@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Papa's Kiss{% endblock %}</title>
+  <link rel="icon" href="https://icons.getbootstrap.com/assets/icons/emoji-kiss.svg" sizes="any" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  <style>
+    html,
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body>footer {
+      margin-top: auto;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <section class="hero is-link has-text-centered">
+      <div class="hero-body">
+        <h1 class="title is-1">
+          <a href="/">
+            <i class="bi bi-emoji-kiss"></i>
+            {{ self.title() }}
+          </a>
+        </h1>
+        {% block header_addition %}
+
+        {% endblock %}
+      </div>
+    </section>
+  </header>
+
+
+  <section class="section">
+    <div class="container is-size-4">
+      {% block body %}
+
+      <h1 class="title">
+        If you see this, there was a rendering error.
+      </h1>
+      {% endblock body %}
+    </div>
+  </section>
+
+  <footer class="footer">
+    <section class="container is-size-5">
+      {% block footer_addition %}
+
+      {% endblock %}
+      <p class="block">
+        Created by Ludwig Neste in 2022.
+      </p>
+      <p class="block">
+        This is mainly a site intended for personal use, to have easy everywhere
+        access to my personal recipes.
+        Most of them are at least inspired by <a href="https://www.joshuaweissman.com/">Joshua Weissman</a>,
+        and maybe a direct copy sometimes. Please do yourself a favor and check out his <a
+          href="https://www.youtube.com/c/JoshuaWeissman">YouTube videos</a>.
+      </p>
+      <p class="block">
+        This webpage is automatically generated from <a href="https://cooklang.org/">`.cook` files</a>.<br>
+        The source code of this webpage can be found <a href="https://github.com/the-ludwig/cook"><i
+            class="bi-github"></i> here</a>.
+      </p>
+    </section>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block header_addition %}
+<a href="/">
+    <span class="icon">
+        <i class="bi bi-house-door"></i>
+    </span> All Recipes</a>
+{% endblock %}
+
+{% block title %}
+{{ recipe.display_name }}
+{% endblock title %}
+
+{% block body %}
+{% set metadata, ingredients, cookware, steps = recipe.recipe.metadata, recipe.recipe.ingredients,
+recipe.recipe.cookware, recipe.recipe.steps %}
+<div class="box">
+    <div class="block">
+        <table class="table">
+            {% for key, value in metadata.items() %}
+            <tr>
+                <th class="has-text-weight-bold">{{ key | capitalize}}:</th>
+                <td>
+                    {% if value.startswith("www") %}
+                    <a href="https://{{value}}">{{ value }}</a>
+                    {% elif value.startswith("https") %}
+                    <a href="{{value}}">{{ value }}</a>
+                    {% else %}
+                    {{ value }}
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+<div class="columns">
+    <div class="column content">
+        <h5>All ingredients:</h5>
+        <ul>
+            {% for ingredient in ingredients %}
+            <li class="is-capitalized">
+                {{ ingredient.name }}
+                {% if ingredient.quantity %}
+                <b>(
+                    {{- ingredient.quantity | recipe_quantity -}}
+                    {% if ingredient.units -%}
+                    {{ ingredient.units -}}
+                    {% endif -%}
+                    )</b>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% if cookware %}
+    <div class="column content">
+        <h5>Cookware:</h5>
+        <ul>
+            {% for equipment in cookware %}
+            <li class="is-capitalized">
+                {{ equipment.name }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+</div>
+
+{% for step in steps %}
+<div class="notification is-link">
+    <h4 class="title">
+        Step {{ loop.index }}
+    </h4>
+    <div class="container ml-6 is-size-5">
+        {% for ingredient in step | recipe_get_ingredients %}
+        <li>
+            {{ ingredient.name }}
+            {% if ingredient.quantity %}
+            <span>(
+                {{- ingredient.quantity | recipe_quantity -}}
+                {% if ingredient.units -%}
+                {{ ingredient.units -}}
+                {% endif -%}
+                )</span>
+            {%- endif %}
+        </li>
+        {% endfor %}
+    </div>
+</div>
+<section class="section mb-5 pt-0">
+    <div class="container mb-5">
+        <div class="content">
+            {% for snip in step -%}
+            {% if snip.type == 'text' -%}
+            {{ snip.value }}
+            {% elif snip.type == 'ingredient' -%}
+            <b>
+                {{- snip.name -}}
+                {% if snip.quantity %}
+                ({{ snip.quantity | recipe_quantity -}}
+                {% if snip.units -%}
+                {{ snip.units -}}
+                {% endif -%}
+                )
+                {% endif -%}
+            </b>
+            {%- elif snip.type == 'cookware' -%}
+            <em>{{ snip.name -}}</em>
+            {%- elif snip.type == 'timer' -%}
+            <b>
+                {{snip.quantity | recipe_quantity-}}
+                {% if snip.units %}
+                {{ snip.units -}}
+                {% endif -%}
+            </b>
+            {%- else -%}
+            {{snip-}}
+            {% endif -%}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endfor %}
+
+
+{% endblock body %}
+
+{% block footer_addition %}
+<div class="notification is-link">
+    <div class="has-text-centered">
+        <a href="{{recipe.github_link}}">
+            <span class="icon is-size-1">
+                <i class="bi bi-github"></i>
+            </span>
+            <span class="pl-5">
+                This recipe's source file can be found here on github.
+            </span>
+        </a>
+    </div>
+    <!-- Source:
+            <pre class="is-size-6">{{recipe.source}}</pre> -->
+</div>
+{% endblock %}

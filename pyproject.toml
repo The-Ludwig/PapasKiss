@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "PapasKiss"
+version = "0.1.0"
+description = "Parses cook files and creates a static webpage to display the recipes (while cooking)."
+authors = ["Ludwig Neste <ludwig.neste@tu-dortmund.de>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Jinja2 = "^3.1.1"
+cooklang = {git = "https://github.com/cooklang/cook-in-c.git", rev = "c742f1f"}
+livereload = "^2.6.3"
+
+[tool.poetry.dev-dependencies]
+black = "^22.3.0"
+flake8 = "^4.0.1"
+jedi-language-server = "^0.35.1"
+pytest = "^7.1.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+# as long as i am working alone on this one, I'll be a black-purist
+skip-string-normalization = false
+
+[tool.pytest.ini_options]
+# -- recommended but optional:
+python_files = "tests.py test_*.py *_tests.py"

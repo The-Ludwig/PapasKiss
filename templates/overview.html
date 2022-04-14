@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="menu is-size-4">
+    {% for category in categories %}
+    <p class="menu-label">
+        {{ category.name }}
+    </p>
+    <ul class="menu-list">
+        {% for recipe in category.recipes %}
+        <li><a href="{{recipe.link}}">{{ recipe.display_name }}</a></li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+</div>
+{% endblock body %}
