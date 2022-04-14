@@ -1,4 +1,4 @@
-name: Publish Frontend
+name: Publish Webpage
 
 on: 
   push:
