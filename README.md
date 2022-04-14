@@ -7,7 +7,7 @@ My recipes in the [cooklang](https://cooklang.org/) format.
 Most of them are inspired by, or even just copied from [Joshua Weissman](https://joshuaweissman.com).
 Please do yourself a favor and check out his [YouTube videos](https://www.youtube.com/c/JoshuaWeissman).
 
-### Creating the Webpage
+### Building the Webpage
 
 I wrote a small python script to render the recipes as a webpage, using the templates in the template folder.
 It uses the `cooklang` python module. 
