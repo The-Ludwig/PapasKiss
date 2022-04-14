@@ -15,7 +15,7 @@ LINK_EXTENSION = os.getenv("LINK_EXTENSION", "")
 REPOSITORY = os.getenv("GITHUB_REPOSITORY", "the-ludwig/cook")
 BRANCH = os.getenv("GITHUB_BASE_REF", "main")
 
-env = {"BASE_NAME": BASE_NAME}
+GLOBAL_VARS = {"BASE_NAME": BASE_NAME}
 
 print(f"Link extension is {LINK_EXTENSION}")
 
@@ -117,11 +117,13 @@ env.filters["recipe_get_ingredients"] = filter_get_ingredients
 # generate start page
 overview_template = env.get_template(TEMPLATE_OVERVIEW)
 with open(os.path.join(OUTPUT_DIR, "index.html"), "w") as file:
-    file.write(overview_template.render(categories=list(categories.values()), *env))
+    file.write(
+        overview_template.render(categories=list(categories.values()), **GLOBAL_VARS)
+    )
 
 
 # generate recipe pages
 recipe_template = env.get_template(TEMPLATE_RECIPE)
 for recipe in recipes:
     with open(os.path.join(OUTPUT_DIR, recipe.file_output_name), "w") as file:
-        file.write(recipe_template.render(recipe=recipe, *env))
+        file.write(recipe_template.render(recipe=recipe, **GLOBAL_VARS))
