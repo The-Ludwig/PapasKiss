@@ -1,7 +1,7 @@
 # [Papa's Kiss](https://the-ludwig.github.io/PapasKiss/)
 [![Publish Webpage](https://github.com/The-Ludwig/cook/actions/workflows/publish.yml/badge.svg)](https://github.com/The-Ludwig/cook/actions/workflows/publish.yml)
 
-Webpage: [https://the-ludwig.github.io/cook/](https://the-ludwig.github.io/PapasKiss/)
+Webpage: [https://the-ludwig.github.io/PapasKiss/](https://the-ludwig.github.io/PapasKiss/)
 
 
 My recipes in the [cooklang](https://cooklang.org/) format.
