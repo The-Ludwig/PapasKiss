@@ -1,42 +1,22 @@
-# What's next
+# [Papa's Kiss](https://the-ludwig.github.io/cook/)
 
-* Install a syntax highlighting package for your text editor. We have packages for SublimeText and VSCode. See  [cooklang.org](https://cooklang.org/docs/syntax-highlighting/) for full instructions.
-* Add your own recipes. Dive into the Cook ecoysystem and discover how easy it is to write in CookLang. It's the best way to learn the [CookLang syntax](https://cooklang.org/docs/spec/).
-* Check out our [tips and tricks](https://cooklang.org/docs/best-practices/) page.
+Webpage: [https://the-ludwig.github.io/cook/](https://the-ludwig.github.io/cook/)
 
-### Read the recipe
 
+My recipes in the [cooklang](https://cooklang.org/) format.
+Most of them are inspired by, or even just copied from [Joshua Weissman](https://joshuaweissman.com).
+Please do yourself a favor and check out his [YouTube videos](https://www.youtube.com/c/JoshuaWeissman).
+
+### Creating the Webpage
+
+I wrote a small python script to render the recipes as a webpage, using the templates in the template folder.
+It uses the `cooklang` python module. 
+
+If you have [python `poetry`](https://python-poetry.org/) installed, just use
 ```sh
-cook recipe read "Root Vegetable Tray Bake.cook"
+> poetry install
+> poetry run python build.py
 ```
+and the webpages can be found in `build/`. 
 
-### Create shopping list
-
-```sh
-cook shopping-list \
-  "Neapolitan Pizza.cook" \
-  "Root Vegetable Tray Bake.cook" \
-  "Snack Basket I.cook"
-```
-
-### Run a server
-
-In directory where you have your recipes run:
-
-```sh
-cook server
-```
-
-Then open [http://127.0.0.1:9080](http://127.0.0.1:9080) in your browser.
-
-### Automate something
-
-Explore [the docs](https://cooklang.org/cli/help/), which describe how to use CookCLI's automation tools.
-
-### Customize your instance
-
-Add aisle configuration information to the `config/aisle.conf` file to tailor your shopping list experience.
-
-
-
-
+Please feel free to improve on this, and please let me know if you do :-).
