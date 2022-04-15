@@ -5,7 +5,7 @@ import os
 import re
 
 # Global variable settings
-BASE_NAME = os.getenv("BASE_NAME", "")
+BASE_NAME = os.getenv("BASE_NAME", "/")
 TEMPLATE_DIR = os.getenv("TEMPLATE_DIR", "templates")
 RECIPE_FILE_PATTERN = os.getenv("RECIPE_FILE_PATTERN", "**/*.cook")
 TEMPLATE_OVERVIEW = os.getenv("TEMPLATE_OVERVIEW", "overview.html")
