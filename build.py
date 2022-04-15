@@ -22,7 +22,10 @@ print(f"Link extension is {LINK_EXTENSION}")
 
 # Helper functions
 def filter_quantity(input: str):
-    return input.strip("0").strip(".")
+    if "." in input:
+        return input.strip("0").rstrip(".")
+    else:
+        return input
     # try:
     #     num = float(input)
     #     return
