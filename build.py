@@ -5,7 +5,7 @@ import os
 import re
 
 # Global variable settings
-BASE_NAME = os.getenv("BASE_NAME", "/")
+BASE_NAME = os.getenv("BASE_NAME", "")
 TEMPLATE_DIR = os.getenv("TEMPLATE_DIR", "templates")
 RECIPE_FILE_PATTERN = os.getenv("RECIPE_FILE_PATTERN", "**/*.cook")
 TEMPLATE_OVERVIEW = os.getenv("TEMPLATE_OVERVIEW", "overview.html")
@@ -26,11 +26,6 @@ def filter_quantity(input: str):
         return input.strip("0").rstrip(".")
     else:
         return input
-    # try:
-    #     num = float(input)
-    #     return
-    # except ValueError:
-    #     return input
 
 
 def filter_get_ingredients(step):
@@ -64,11 +59,12 @@ def fix_recipe(parsed_recipe):
                 stapled[(ing["name"] + str(idx), ing["units"])] = ing
 
         else:
+            new = ing.copy()
             try:
-                ing["quantity_number"] = float(ing["quantity"])
+                new["quantity_number"] = float(ing["quantity"])
             except ValueError:
-                ing["quantity_number"] = None
-            stapled[key] = ing
+                new["quantity_number"] = None
+            stapled[key] = new
 
     parsed_recipe["ingredients"] = stapled.values()
     return parsed_recipe
