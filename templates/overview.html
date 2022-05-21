@@ -2,12 +2,12 @@
 
 {% block body %}
 <div class="menu is-size-4">
-    {% for category in categories %}
+    {% for category in categories | sort(attribute='name') %}
     <p class="menu-label">
         {{ category.name }}
     </p>
     <ul class="menu-list">
-        {% for recipe in category.recipes %}
+        {% for recipe in category.recipes | sort(attribute='display_name') %}
         <li><a href="{{recipe.link}}">{{ recipe.display_name }}</a></li>
         {% endfor %}
     </ul>
