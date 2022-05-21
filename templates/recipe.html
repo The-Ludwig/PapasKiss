@@ -15,24 +15,19 @@
 {% set metadata, ingredients, cookware, steps = recipe.recipe.metadata, recipe.recipe.ingredients,
 recipe.recipe.cookware, recipe.recipe.steps %}
 <div class="box">
-    <div class="block">
-        <table class="table">
-            {% for key, value in metadata.items() %}
-            <tr>
-                <th class="has-text-weight-bold">{{ key | capitalize}}:</th>
-                <td>
-                    {% if value.startswith("www") %}
-                    <a href="https://{{value}}">{{ value }}</a>
-                    {% elif value.startswith("https") %}
-                    <a href="{{value}}">{{ value }}</a>
-                    {% else %}
-                    {{ value }}
-                    {% endif %}
-                </td>
-            </tr>
-            {% endfor %}
-        </table>
+    {% for key, value in metadata.items() %}
+    <div class="block" style="overflow: hidden; text-overflow: ellipsis;">
+        <span class="has-text-weight-bold">{{ key | capitalize}}:</span>
+        {% if value.startswith("www") %}
+        <a href="https://{{value}}">{{ value
+            }}</a>
+        {% elif value.startswith("https") %}
+        <a href="{{value}}">{{ value }}</a>
+        {% else %}
+        {{ value }}
+        {% endif %}
     </div>
+    {% endfor %}
 </div>
 <div class="columns">
     <div class="column content">
